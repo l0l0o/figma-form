@@ -8,7 +8,6 @@ const ChooseAccountType = ({setUserAccount}: ChooseAccountTypeProps) => {
   
   const handleChange = (accountType: string) => {
     setUserAccount(accountType);
-    console.log("2: ", accountType);
   }
 
   return ( 

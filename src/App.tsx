@@ -18,11 +18,35 @@ function App() {
 
   const handleAccountTypeChange = (accountType: string) => {
     setUserAccount((prev) => ({ ...prev, AccountType: accountType }));
-    console.log('clicked');
-    console.log(UserAccount);
   };
 
-  // const [step, setStep] = useState(1);
+  const handleAccountSecondStep = (name: string, email: string, password: string) => {
+    setUserAccount((prev) => ({ ...prev, Name: name }));
+    setUserAccount((prev) => ({ ...prev, Email: email }));
+    setUserAccount((prev) => ({ ...prev, Password: password }));
+  };
+
+  const handleAccountThirdStep = (age: number, interests: string, description: string) => {
+    setUserAccount((prev) => ({ ...prev, Age: age }));
+    setUserAccount((prev) => ({ ...prev, Interests: interests }));
+    setUserAccount((prev) => ({ ...prev, Description: description }));
+  };
+
+  const [step, setStep] = useState(1);
+
+  const increaseSteps = () => {
+    if (step !== 3) {
+      setStep(step + 1);
+    }
+  }
+
+  const decreaseSteps = () => {
+    if (step !== 1) {
+      setStep(step - 1);
+    }
+  }
+
+
 
   return (
     <>
@@ -31,13 +55,22 @@ function App() {
           <br />
           <h4 className={Style.description}>Please fill out this form with the required information</h4>
           <br /><br />
+          
+          {step === 1 && (
+            <ChooseAccountType
+              setUserAccount={handleAccountTypeChange}
+            />
+          )}
 
-          <ChooseAccountType
-            setUserAccount={handleAccountTypeChange}
-          />
+          
 
           <br />
-          <button className='p-4 bg-violet-400 text-slate-50 rounded-md text-sm'>Previous</button>
+          <div className='flex gap-2 w-full justify-end'>
+            {step > 1 && (
+              <button onClick={decreaseSteps} className='p-4 bg-transparent hover:underline text-slate-300 rounded-md text-sm'>Previous</button>
+            )}
+            <button onClick={increaseSteps} className='p-4 bg-violet-400 text-slate-50 rounded-md text-sm'>Next</button>
+          </div>
         </div>
     </>
   )
