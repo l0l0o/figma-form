@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css'
-import ChooseAccountType from './steps/ChooseAccountType'
+import ChooseAccountType from './steps/step1/ChooseAccountType'
 
 function App() {
   

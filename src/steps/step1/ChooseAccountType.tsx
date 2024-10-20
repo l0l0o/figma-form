@@ -1,4 +1,4 @@
-import AccountTypeItem from "../components/AccountTypeItem";
+import AccountTypeItem from "./AccountTypeItem";
 
 type ChooseAccountTypeProps = {
   setUserAccount: (accountType: string) => void,
@@ -19,24 +19,24 @@ const ChooseAccountType = ({setUserAccount}: ChooseAccountTypeProps) => {
             title={account_type.PERSONAL_ACCOUNT}
             description={description.LOREM}
             onClick={handleChange}
-            />            
+          />            
           <br />
           <AccountTypeItem
             title={account_type.BUSINESS_ACCOUNT}
             description={description.LOREM}
             onClick={handleChange}
-            />
-          </div>
-     )
-    }
+          />
+    </div>
+  )
+}
     
-    enum account_type {
-      PERSONAL_ACCOUNT = "Personal Account",
-      BUSINESS_ACCOUNT = "Business Account",
-    }
-    
-    enum description {
-      LOREM = "Lorem ipsum dolor sit amet consectetur adipisicing elit."
-    }
+enum account_type {
+  PERSONAL_ACCOUNT = "Personal Account",
+  BUSINESS_ACCOUNT = "Business Account",
+}
+
+enum description {
+  LOREM = "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+}
 
 export default ChooseAccountType;
