@@ -22,13 +22,13 @@ const FormStep2 = ({userName, userMail, userPassword, onChange}: FormStep2Props)
     return ( 
         <div className='flex flex-col'>
             <label className='text-start'>Name</label>
-            <input onChange={handleChange} value={userName} className='bg-slate-100' type="text" name='name' />
+            <input onChange={handleChange} value={userName} className='bg-slate-100 focus:border-violet-300' type="text" name='name' />
             <br />
             <label className='text-start'>Email</label>
-            <input onChange={handleChange} value={userMail} className='bg-slate-100' type="email" name='email' />
+            <input onChange={handleChange} value={userMail} className='bg-slate-100 focus:border-violet-300' type="email" name='email' />
             <br />
             <label className='text-start'>Password</label>
-            <input onChange={handleChange} value={userPassword} className='bg-slate-100' type="password" name='password' />
+            <input onChange={handleChange} value={userPassword} className='bg-slate-100 focus:border-violet-300' type="password" name='password' />
         </div>
      );
 }

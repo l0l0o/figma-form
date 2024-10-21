@@ -24,13 +24,13 @@ const FormStep3 = ({userAge, userInterests, userDescription, onChange}: FormStep
     return ( 
         <form className='flex flex-col'>
             <label className='text-start'>Age</label>
-            <input onChange={handleChange} value={userAge} className='bg-slate-100' type="number" name='age' />
+            <input onChange={handleChange} value={userAge} className='bg-slate-100 focus:border-violet-300' type="number" name='age' />
             <br />  
             <label className='text-start'> Area of interests</label>
-            <input onChange={handleChange} value={userInterests} className='bg-slate-100' type="text" name='interests' />
+            <input onChange={handleChange} value={userInterests} className='bg-slate-100 focus:border-violet-300' type="text" name='interests' />
             <br /> 
             <label className='text-start'> Description</label>
-            <input onChange={handleChange} value={userDescription} className='bg-slate-100' type="text" name='description' />
+            <input onChange={handleChange} value={userDescription} className='bg-slate-100 focus:border-violet-300' type="text" name='description' />
         </form>
      );
 }

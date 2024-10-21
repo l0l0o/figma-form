@@ -3,6 +3,7 @@ import './App.css'
 import ChooseAccountType from './steps/step1/ChooseAccountType'
 import FormStep2 from './steps/step2/FormStep2';
 import FormStep3 from './steps/step3/FormStep3';
+import Button from './components/Button';
 
 function App() {
   
@@ -46,7 +47,7 @@ function App() {
     }  };
 
   const [step, setStep] = useState({
-    firstStep: true,
+    firstStep: false,
     secondStep: false,
     thirdStep: false,
   });
@@ -54,7 +55,7 @@ function App() {
   const [page, setPage] = useState(1);
 
   const nextPage = () => {
-    if (page !== 3) {
+    if (page !== 4) {
       setPage(page+1);
     }
   }
@@ -72,7 +73,20 @@ function App() {
           <br />
           <h4 className={Style.description}>Please fill out this form with the required information</h4>
           <br /><br />
-          
+
+          <div className='flex flex-row gap-10 justify-center'>
+            <div className={`border-2 font-bold ${step.firstStep === true ? "border-violet-400 bg-violet-400 text-white" : "border-slate-200 text-slate-300"}  rounded-full p-3`}>
+              1
+            </div>
+            <div className={`border-2 font-bold ${step.secondStep === true ? "border-violet-400 bg-violet-400 text-white" : "border-slate-200 text-slate-300"}  rounded-full p-3`}>
+              2
+            </div>
+            <div className={`border-2 font-bold ${step.thirdStep === true ? "border-violet-400 bg-violet-400 text-white" : "border-slate-200 text-slate-300"}  rounded-full p-3`}>
+              3
+            </div>
+          </div>
+          <br />
+
           {page === 1 && (
             <ChooseAccountType
               setUserAccount={handleAccountTypeChange}
@@ -101,9 +115,19 @@ function App() {
           <br />
           <div className='flex gap-2 w-full justify-end'>
             {page !== 1 && (
-              <button onClick={previousPage} className='p-4 bg-transparent hover:underline text-slate-300 rounded-md text-sm'>Previous</button>
+              <Button
+                text='Previous'
+                bg_color='bg-transparent'
+                text_color='text-slate-300 hover:underline'
+                onClick={previousPage}
+              />
             )}
-            <button onClick={nextPage} className='p-4 bg-violet-400 text-slate-50 rounded-md text-sm'>Next</button>
+            <Button
+              text='Next'
+              bg_color='bg-violet-400'
+              text_color='text-slate-50 '
+              onClick={nextPage}
+            />
           </div>
         </div>
     </>
