@@ -4,6 +4,7 @@ import ChooseAccountType from './steps/step1/ChooseAccountType'
 import FormStep2 from './steps/step2/FormStep2';
 import FormStep3 from './steps/step3/FormStep3';
 import Button from './components/Button';
+import Step4 from './steps/step4/Step4';
 
 function App() {
   
@@ -55,7 +56,7 @@ function App() {
   const [page, setPage] = useState(1);
 
   const nextPage = () => {
-    if (page !== 4) {
+    if (page !== 5) {
       setPage(page+1);
     }
   }
@@ -69,23 +70,37 @@ function App() {
   return (
     <>
         <div id='form-view' style={{width: 655}} className='container flex flex-col bg-white-50 rounded-md p-8'>
-          <h1 className={Style.title}>Registration Form</h1>
-          <br />
-          <h4 className={Style.description}>Please fill out this form with the required information</h4>
-          <br /><br />
 
-          <div className='flex flex-row gap-10 justify-center'>
-            <div className={`border-2 font-bold ${step.firstStep === true ? "border-violet-400 bg-violet-400 text-white" : "border-slate-200 text-slate-300"}  rounded-full p-3`}>
-              1
+          {page !== 4 && (
+            <div>
+              <h1 className={Style.title}>Registration Form</h1>
+              <br />
+              <h4 className={Style.description}>Please fill out this form with the required information</h4>
+              <br /><br />
+
+              <div className='flex flex-row gap-10 justify-center'>
+                <div className='flex flex-col items-center'>
+                  <div className={`w-8 h-8 border-2 font-bold ${step.firstStep === true ? "border-violet-400 bg-violet-400 text-white" : "border-slate-200 text-slate-300"}  rounded-full`}>
+                    1
+                  </div>
+                  <label className={`${step.firstStep === true ? "text-violet-400" : "text-slate-300"}`}>Account Type</label>
+                </div>
+                <div className='flex flex-col items-center'>
+                  <div className={`w-8 h-8 border-2 font-bold ${step.secondStep === true ? "border-violet-400 bg-violet-400 text-white" : "border-slate-200 text-slate-300"}  rounded-full`}>
+                    2
+                  </div>
+                  <label className={`${step.secondStep === true ? "text-violet-400" : "text-slate-300"}`}>Personal Information</label>
+                </div>
+                <div className='flex flex-col items-center'>
+                  <div className={`w-8 h-8 border-2 font-bold ${step.thirdStep === true ? "border-violet-400 bg-violet-400 text-white" : "border-slate-200 text-slate-300"}  rounded-full`}>
+                    3
+                  </div>
+                  <label className={`${step.thirdStep === true ? "text-violet-400" : "text-slate-300"}`}>Profile Data</label>
+                </div>
+              </div>
+              <br />
             </div>
-            <div className={`border-2 font-bold ${step.secondStep === true ? "border-violet-400 bg-violet-400 text-white" : "border-slate-200 text-slate-300"}  rounded-full p-3`}>
-              2
-            </div>
-            <div className={`border-2 font-bold ${step.thirdStep === true ? "border-violet-400 bg-violet-400 text-white" : "border-slate-200 text-slate-300"}  rounded-full p-3`}>
-              3
-            </div>
-          </div>
-          <br />
+          )}
 
           {page === 1 && (
             <ChooseAccountType
@@ -112,23 +127,33 @@ function App() {
             />
           )}
 
-          <br />
-          <div className='flex gap-2 w-full justify-end'>
-            {page !== 1 && (
-              <Button
-                text='Previous'
-                bg_color='bg-transparent'
-                text_color='text-slate-300 hover:underline'
-                onClick={previousPage}
-              />
-            )}
-            <Button
-              text='Next'
-              bg_color='bg-violet-400'
-              text_color='text-slate-50 '
-              onClick={nextPage}
+          {page === 4 && (
+            <Step4
+              username={UserAccount.Name}
+              usermail={UserAccount.Email}
             />
-          </div>
+          )}
+
+          <br />
+          {page !== 4 && (
+                      <div className='flex gap-2 w-full justify-end'>
+                      {page !== 1 && (
+                        <Button
+                          text='Previous'
+                          bg_color='bg-transparent'
+                          text_color='text-slate-300 hover:underline'
+                          onClick={previousPage}
+                        />
+                      )}
+                      <Button
+                        text='Next'
+                        bg_color='bg-violet-400'
+                        text_color='text-slate-50 '
+                        onClick={nextPage}
+                      />
+                    </div>
+          
+          )}
         </div>
     </>
   )
