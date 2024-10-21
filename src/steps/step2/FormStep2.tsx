@@ -1,5 +1,3 @@
-
-
 type FormStep2Props = {
     userName: string;
     userMail: string;

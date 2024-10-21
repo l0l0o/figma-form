@@ -41,8 +41,9 @@ function App() {
     setUserAccount((prev) => ({ ...prev, Interests: interests }));
     setUserAccount((prev) => ({ ...prev, Description: description }));
 
-    setStep((prev) => ({ ...prev, thirdStep: true}));
-  };
+    if (UserAccount.Age !== null && UserAccount.Interests !== "" && UserAccount.Description !== "") {
+      setStep((prev) => ({ ...prev, thirdStep: true}));
+    }  };
 
   const [step, setStep] = useState({
     firstStep: true,
@@ -89,7 +90,11 @@ function App() {
 
           {page === 3 && (
             <FormStep3
-              
+            userAge={UserAccount.Age}
+            userInterests={UserAccount.Interests}
+            userDescription={UserAccount.Description}
+            onChange={handleAccountThirdStep}
+
             />
           )}
 
