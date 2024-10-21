@@ -9,7 +9,6 @@ const AccountTypeItem = ({title, description, onClick} : AccountTypeItemProps) =
 
     const handleClick = () => {
       onClick(title);
-      console.log("1: ", title);
     }
 
 
